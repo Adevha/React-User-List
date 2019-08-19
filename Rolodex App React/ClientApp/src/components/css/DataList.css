@@ -1,0 +1,19 @@
+@media all and (min-width: 480px) {
+    .list {
+        padding: 60px 0;
+        margin: 0 auto;
+        max-width: 600px;
+    }
+
+        .list form {
+          
+        }
+
+    h1 {
+        text-align: center;
+    }
+
+     
+
+
+}
