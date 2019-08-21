@@ -9,7 +9,7 @@ export class NavMenu extends Component {
 
   render() {
     return (
-      <Navbar inverse fixedTop fluid collapseOnSelect>
+        <Navbar bg="primary" inverse fixedTop fluid collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
             <Link to={'/'}>Rolodex App React</Link>
@@ -18,22 +18,18 @@ export class NavMenu extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-           
-            <LinkContainer to={'register'}>
+            
+            <LinkContainer to={'/register'}>
               <NavItem>
             <Glyphicon glyph='plus' /> Register
               </NavItem>
             </LinkContainer>
-            <LinkContainer to={'/login'}>
+            <LinkContainer to={'/account'}>
               <NavItem>
-            <Glyphicon glyph='user' /> Login
+            <Glyphicon glyph='user' /> Account
               </NavItem>
                     </LinkContainer>
-                    <LinkContainer to={'/UserList'}>
-                <NavItem>
-                    <Glyphicon glyph='th-list' /> User List
-              </NavItem>
-            </LinkContainer>
+                 
           </Nav>
         </Navbar.Collapse>
       </Navbar>

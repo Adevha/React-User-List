@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import { Redirect } from 'react-router-dom'
-import { Link, withRouter } from "react-router-dom";
-import "./css/Login.css";
+
+import "./css/Account.css";
 
 export class Register extends Component {
     displayName = Register.name
@@ -15,7 +14,8 @@ export class Register extends Component {
             email: "",
             password: "",
             name: "",
-            phone: ""
+            phone: "",
+            error: ""
         };
     }
 
@@ -34,25 +34,47 @@ export class Register extends Component {
     }
 
     registerNew = event => {
-              
-        fetch('api/SampleData/CreateUserData', {
+        event.preventDefault();
+        fetch('api/UserData/CreateUserData', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ Name: this.state.name, Email: this.state.email, Pass: this.state.password, Phone: this.state.phone.toString()})
+            body: JSON.stringify({ Name: this.state.name, Email: this.state.email, Pass: this.state.password, Phone: this.state.phone.toString() })
+        }).then(response => {
+            console.log(response.status);
+            if (response.status === 200) {
+                this.setState({
+                    error: "New User Registered!"
+                });
+                document.location.reload();
+                window.location.replace('/account')
+
+            }  
+            else {
+                this.setState({
+                    error: "Error Registering User!"
+                });
+            }
+             
+
+
+            
         });
-        window.open("/login");
+       
+        
 
     }
 
     render() {
+        const { error } = this.state;
         return (
             <div className="Login">
                 <h1>Register</h1>
                 <br />
                 <form onSubmit={this.handleSubmit}>
+                    <p >{error}</p>
                     <FormGroup controlId="email" bsSize="large">
                         <ControlLabel>Email</ControlLabel>
                         <FormControl

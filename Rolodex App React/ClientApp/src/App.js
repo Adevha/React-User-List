@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { Switch } from 'react-router-dom';
 import { Register } from './components/Register';
-import { Login } from './components/Login';
+import { Account } from './components/Account';
 import { UserList } from './components/UserList';
 
 export default class App extends Component {
@@ -23,11 +21,9 @@ export default class App extends Component {
     return (
       <Layout>
         
-            <Route path='/register' component={Register} />
-            <Switch>
-                <Route path='/login' component={Login} />
-                <Route exact path='/' component={Register} />
-            </Switch>
+            <Route path='/register' component={Register} />            
+            <Route path='/account' component={Account} />
+            <Route exact path='/' component={Register} />            
             <Route path='/UserList' component={UserList} />
       </Layout>
     );
