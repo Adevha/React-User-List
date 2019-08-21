@@ -97,7 +97,7 @@ export  class Account extends Component {
     render() {
         const { error } = this.state;
         const { user } = this.state;
-        if (localStorage.getItem('user') == '') {
+        if (localStorage.getItem('user') == '' || localStorage.getItem('user') == null) {
             return (
 
                 <div className="Login">
